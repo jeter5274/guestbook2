@@ -62,9 +62,9 @@ public class GBController extends HttpServlet {
 				
 				//어트리뷰트에 no데이터 값 저장
 				request.setAttribute("guestbook_no", Integer.parseInt(request.getParameter("no")));
-				
+				request.setAttribute("delresult", result);
 				//포워드
-				rd = request.getRequestDispatcher("./WEB-INF/deleteError.jsp");
+				rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
 				rd.forward(request, response);
 				
 			}else {
@@ -80,6 +80,10 @@ public class GBController extends HttpServlet {
 
 			//어트리뷰트에 no데이터 값 저장
 			request.setAttribute("guestbook_no", no);
+			
+			//null오류 해결을 위한 delresult값 임의전송
+			int result = 1;
+			request.setAttribute("delresult", result);
 				
 			//포워드
 			rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");

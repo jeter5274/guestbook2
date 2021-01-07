@@ -2,6 +2,7 @@
 
 <%
 	int no = (int)request.getAttribute("guestbook_no");
+	int result = (int)request.getAttribute("delresult");
 %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,9 @@
 	</head>
 	
 	<body>
+		<%if(result==0){%>
+			비밀번호를 잘 못 입력하셨습니다. 다시 입력해주세요.
+		<%}%>
 		
 		<%-- post 방식으로는 전송이 안됨--%>
 		<form action="/guestbook2/gbc" method="get">

@@ -41,7 +41,7 @@
 					<td><%= gbList.get(i).getNo() %></td>
 					<td><%= gbList.get(i).getName() %></td>
 					<td><%= gbList.get(i).getReg_date() %></td>
-					<td><%-- <a href="./deleteForm.jsp?no=<%=gbList.get(i).getNo()%>">삭제</a> --%></td>
+					<td><a href="/guestbook2/gbc?action=dform&no=<%=gbList.get(i).getNo()%>">삭제</a></td>
 				</tr>
 				<tr>
 					<td colspan="4"> <%= gbList.get(i).getContent() %> </td>
