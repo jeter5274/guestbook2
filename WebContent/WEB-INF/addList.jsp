@@ -8,7 +8,7 @@
 	//리스트를 가져옴 -> 어트리뷰트로 리스트 받아옴
 	List<GBVo> gbList = (List<GBVo>)(request.getAttribute("GBList"));
 	
-	System.out.println(gbList);
+	//System.out.println(gbList);
 %>
 <!DOCTYPE html>
 <html>
@@ -17,8 +17,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<%-- post 방식으로는 전송이 안됨 / controller가 실행이 안됨, from action의 주소가 문제가 있는 듯함--%>
 		<form action="/guestbook2/gbc" method="get">
-			<%-- action: --%><input type="hidden" name="action" value="add">
+			<%-- action:--%> <input type="hidden" name="action" value="add">
 			<table border="1">
 				<tr>
 					<td>이름</td>

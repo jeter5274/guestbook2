@@ -16,7 +16,7 @@
 			비밀번호를 잘 못 입력하셨습니다. 다시 입력해주세요.
 		<%}%>
 		
-		<%-- post 방식으로는 전송이 안됨--%>
+		<%-- post 방식으로는 전송이 안됨 --%>
 		<form action="/guestbook2/gbc" method="get">
 			비밀번호 <input type="text" name="password">
 			<%--no:--%> <input type="hidden" name="no" value=<%=no%>>

@@ -15,22 +15,22 @@ import com.javaex.vo.GBVo;
 
 @WebServlet("/gbc")
 public class GBController extends HttpServlet {
-     
-	
+     	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		request.setCharacterEncoding("utf-8");
 		
 		//파라미터의 action 값을 받아옴
 		String action = request.getParameter("action");
-		
+		System.out.println(action);
 		GuestBookDao gbDao = new GuestBookDao();
 		RequestDispatcher rd;
 		
 		if("addList".equals(action)) {
 			System.out.println("입력창 및 리스트 출력");
+			
 			List<GBVo> gbList = gbDao.getList();
-			System.out.println(gbList);
+			
 			//어트리뷰트에 데이터 저장
 			request.setAttribute("GBList", gbList);
 			
@@ -77,7 +77,7 @@ public class GBController extends HttpServlet {
 			
 			//파라미터에서 no를 받아옴
 			int no = Integer.parseInt(request.getParameter("no"));
-
+			
 			//어트리뷰트에 no데이터 값 저장
 			request.setAttribute("guestbook_no", no);
 			
