@@ -2,7 +2,13 @@
 
 <%
 	int no = (int)request.getAttribute("guestbook_no");
-	int result = (int)request.getAttribute("delresult");
+	int result;
+	
+	try{
+		result = (int)request.getAttribute("delresult");	
+	}catch(NullPointerException e){ 
+		result = 1;
+	}
 %>
 <!DOCTYPE html>
 <html>
