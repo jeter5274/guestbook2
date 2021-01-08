@@ -17,8 +17,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<%-- post 방식으로는 전송이 안됨 / controller가 실행이 안됨, from action의 주소가 문제가 있는 듯함--%>
-		<form action="/guestbook2/gbc" method="get">
+		<%-- post 방식으로는 전송이 안됨 / controller가 실행이 안됨, from action의 주소가 문제가 있는 듯함
+			 컨트롤러의 메소드 설정을 해야 실행이 됨 --%>
+		<form action="/guestbook2/gbc" method="post">
 			<%-- action:--%> <input type="hidden" name="action" value="add">
 			<table border="1">
 				<tr>
