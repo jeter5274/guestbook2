@@ -60,8 +60,6 @@ public class GBController extends HttpServlet {
 				
 				System.out.println("실패");
 				
-				//어트리뷰트에 no데이터 값 저장
-				request.setAttribute("guestbook_no", Integer.parseInt(request.getParameter("no")));
 				request.setAttribute("delresult", result);
 				//포워드
 				rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
@@ -74,12 +72,6 @@ public class GBController extends HttpServlet {
 			
 		}else if("dform".equals(action)) {
 			System.out.println("방명록 삭제 폼");
-			
-			//파라미터에서 no를 받아옴
-			int no = Integer.parseInt(request.getParameter("no"));
-			
-			//어트리뷰트에 no데이터 값 저장
-			request.setAttribute("guestbook_no", no);
 				
 			//포워드
 			rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
