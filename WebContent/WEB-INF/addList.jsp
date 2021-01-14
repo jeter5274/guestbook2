@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page import="java.util.List"%>
-
-<%@ page import="com.javaex.vo.GBVo"%>
-
-<%
-	//리스트를 가져옴 -> 어트리뷰트로 리스트 받아옴
-	List<GBVo> gbList = (List<GBVo>)(request.getAttribute("GBList"));
-	
-	//System.out.println(gbList);
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,8 +8,6 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<%-- post 방식으로는 전송이 안됨 / controller가 실행이 안됨, from action의 주소가 문제가 있는 듯함
-			 컨트롤러의 메소드 설정을 해야 실행이 됨 --%>
 		<form action="/guestbook2/gbc" method="post">
 			<%-- action:--%> <input type="hidden" name="action" value="add">
 			<table border="1">
@@ -37,20 +26,22 @@
 			</table>
 		</form>
 		<br>
-		<% for(int i=0; i<gbList.size();i++) { %>
+
+		<c:forEach items="${GBList}" var="gbl"> 
 			<table border="1">
 				<tr>
-					<td><%= gbList.get(i).getNo() %></td>
-					<td><%= gbList.get(i).getName() %></td>
-					<td><%= gbList.get(i).getReg_date() %></td>
-					<td><a href="/guestbook2/gbc?action=dform&no=<%=gbList.get(i).getNo()%>">삭제</a></td>
+					<td>${gbl.no}</td>
+					<td>${gbl.name}</td>
+					<td>${gbl.reg_date}</td>
+					<td><a href="/guestbook2/gbc?action=dform&no=${gbl.no}">삭제</a></td>
 				</tr>
 				<tr>
-					<td colspan="4"> <%= gbList.get(i).getContent() %> </td>
+					<td colspan="4"> ${gbl.content} </td>
+
 				</tr>
 			</table>
 			<br>
-		<%} %>
+		</c:forEach>
 
 	</body>
 </html>

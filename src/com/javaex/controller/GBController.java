@@ -26,19 +26,7 @@ public class GBController extends HttpServlet {
 		GuestBookDao gbDao = new GuestBookDao();
 		RequestDispatcher rd;
 		
-		if("addList".equals(action)) {
-			System.out.println("입력창 및 리스트 출력");
-			
-			List<GBVo> gbList = gbDao.getList();
-			
-			//어트리뷰트에 데이터 저장
-			request.setAttribute("GBList", gbList);
-			
-			//포워드
-			rd = request.getRequestDispatcher("./WEB-INF/addList.jsp");
-			rd.forward(request, response);
-			
-		}else if("add".equals(action)) {
+		if("add".equals(action)) {
 			System.out.println("방명록 등록");
 			
 			//파라미터에서 3개 값을 받아와서 GBVo로 묶음
@@ -77,8 +65,17 @@ public class GBController extends HttpServlet {
 			rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
 			rd.forward(request, response);
 			
-		}else {
+		}else { //defualt
+			System.out.println("입력창 및 리스트 출력");
 			
+			List<GBVo> gbList = gbDao.getList();
+			
+			//어트리뷰트에 데이터 저장
+			request.setAttribute("GBList", gbList);
+			
+			//포워드
+			rd = request.getRequestDispatcher("./WEB-INF/addList.jsp");
+			rd.forward(request, response);
 		}
 	}
 		
